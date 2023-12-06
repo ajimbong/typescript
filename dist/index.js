@@ -53,3 +53,4 @@ function itemAsArray(item) {
     return [item];
 }
 console.log(itemAsArray("mandate"));
+console.log(itemAsArray(5));
