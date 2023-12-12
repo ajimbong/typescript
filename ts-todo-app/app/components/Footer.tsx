@@ -1,10 +1,12 @@
-import { useState } from "react";
+"use client"
 
-type FooterProps = {
-    addTask: (inputText: string)=> void
-}
+import { useContext, useState } from "react";
+import { TodoContext } from "../Providers/TodoProvider";
 
-function Footer({ addTask }: FooterProps) {
+function Footer() {
+  
+  const {addTask} = useContext(TodoContext)
+
   const [inputText, setInputText] = useState("");
 
   const validateTaskBeforeAdd = () => {

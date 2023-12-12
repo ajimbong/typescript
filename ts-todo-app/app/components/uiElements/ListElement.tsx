@@ -1,12 +1,16 @@
+import { TodoContext } from "@/app/Providers/TodoProvider";
+import { useContext } from "react";
+
 type ListElementProps = {
     task: string,
     index: number,
-    deleteTask: (index: number) => void,
-    done: boolean,
-    toggleDoneState: (index: number)=> void
+    done: boolean
 }
 
-function ListElement({ task, index, deleteTask, done, toggleDoneState }: ListElementProps) {
+function ListElement({ task, index, done }: ListElementProps) {
+
+  const {deleteTask, toggleDoneState} = useContext(TodoContext)
+
   const handleClick = () => {
     deleteTask(index);
   };

@@ -1,17 +1,16 @@
+"use client"
+
+import { useContext } from "react";
 import ListElement from "./uiElements/ListElement";
+import { TodoContext } from "../Providers/TodoProvider";
 
 type Task = {
     task: string,
     done: boolean
 }
 
-type MainProps = {
-    tasks: Task[],
-    deleteTask: (index: number) => void,
-    toggleDoneState: (index: number)=> void
-}
-
-function Main({ tasks, deleteTask, toggleDoneState }: MainProps) {
+function Main() {
+  const {tasks} = useContext(TodoContext)
   const noItemsElement = (message: string) => {
     return (
       <li className="no-item">
@@ -29,9 +28,7 @@ function Main({ tasks, deleteTask, toggleDoneState }: MainProps) {
                 task: item.task,
                 done: item.done,
                 key: index,
-                index,
-                deleteTask,
-                toggleDoneState,
+                index
               };
               return <ListElement {...props} key={index} />;
             })}
